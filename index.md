@@ -17,7 +17,7 @@ Here's a comprehensive roadmap of what you should learn to become a Java backend
 - Multithreading and concurrency
 - Java 8+ features (lambdas, streams, etc.)
 
-[Resources](resources.md)
+### [Resources](resources.md) (Very Useful !!)
 
 ### Database Skills
 - SQL and relational databases (e.g. MySQL, PostgreSQL)
