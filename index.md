@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: "Java Backend Developer Roadmap"
 date: 2024-11-06
 ---
@@ -8,6 +8,7 @@ date: 2024-11-06
 
 Here's a comprehensive roadmap of what you should learn to become a Java backend developer:
 
+### [Resources](resources.md) (Very Useful !!)  ||  [Resources for Absolute Beginners](absolute-beginners.md)
 
 ### Core Java Fundamentals
 - Java syntax and data types
@@ -16,8 +17,6 @@ Here's a comprehensive roadmap of what you should learn to become a Java backend
 - Collections framework
 - Multithreading and concurrency
 - Java 8+ features (lambdas, streams, etc.)
-
-### [Resources](resources.md) (Very Useful !!)
 
 ### Database Skills
 - SQL and relational databases (e.g. MySQL, PostgreSQL)
