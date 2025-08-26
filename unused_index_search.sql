@@ -78,3 +78,19 @@ LEFT JOIN LATERAL (
   LIMIT 1
 ) m ON TRUE
 ORDER BY c.index_bytes DESC;
+
+	-- 1.	Find long-running transactions (biggest cause of delays)
+
+SELECT pid, usename, application_name, state,
+       now() - xact_start AS xact_age, query
+FROM pg_stat_activity
+WHERE xact_start IS NOT NULL
+ORDER BY xact_start;
+
+	-- 2.	Make sure nothing is holding locks on the index
+-- replace your_schema.your_index_name
+SELECT l.locktype, l.mode, l.granted, a.pid, a.query
+FROM pg_locks l
+JOIN pg_class c ON c.oid = l.relation
+LEFT JOIN pg_stat_activity a ON a.pid = l.pid
+WHERE c.relname = 'your_index_name' AND a.pid IS DISTINCT FROM pg_backend_pid();
