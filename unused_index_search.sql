@@ -94,3 +94,20 @@ FROM pg_locks l
 JOIN pg_class c ON c.oid = l.relation
 LEFT JOIN pg_stat_activity a ON a.pid = l.pid
 WHERE c.relname = 'your_index_name' AND a.pid IS DISTINCT FROM pg_backend_pid();
+
+
+SELECT
+    n.nspname AS schema_name,
+    t.relname AS table_name,
+    c.conname AS constraint_name,
+    CASE c.contype
+      WHEN 'p' THEN 'PRIMARY KEY'
+      WHEN 'u' THEN 'UNIQUE'
+    END AS constraint_type,
+    i.relname AS index_name
+FROM pg_constraint c
+JOIN pg_class t ON t.oid = c.conrelid
+JOIN pg_namespace n ON n.oid = t.relnamespace
+JOIN pg_class i ON i.oid = c.conindid
+WHERE n.nspname = 'your_schema'
+ORDER BY schema_name, table_name;
